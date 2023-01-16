@@ -15,7 +15,7 @@ Node* create_node(int value)
 	return n;
 }
 
-Node* insert_node(Node* head, int value)
+Node* append_node(Node* head, int value)
 {
     Node* p;
     Node* tmp = create_node(value);
@@ -30,7 +30,20 @@ Node* insert_node(Node* head, int value)
         }
         p->next = tmp;
     }
-    return head;
+    
+	return head;
+}
+
+void insert_node(Node* head, Node* before, int value)
+{
+	Node* p = head;
+	while(p->next != before){
+		p = p->next;
+	}
+	
+	Node* new = create_node(value);
+	new->next = p->next;
+	p->next = new;
 }
 
 Node* traverse(Node* head, int value)
@@ -60,13 +73,16 @@ void print_list(Node* head)
 {
     Node* p = head;
     if(p->next == NULL){
-        printf("Empty List\n");
+        printf("Empty List");
     }else{
+		printf("HEAD ", head);
         while(p != NULL){
-            printf("%d\n", p->data);
+            // printf("-> (%p | %d ) ", p, p->data);
+            printf("-> %d ", p->data);
             p = p->next;
         }
     }
+	printf("\n");
 }
 
 void free_list(Node* head)

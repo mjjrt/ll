@@ -22,13 +22,21 @@ typedef struct node{
 Node* create_node(int value);
 
 /**
- * @brief Insert a Node into the List
+ * @brief Append a Node to the end of the List
  * 
  * @param head pointer to head (first object)
  * @param value value to add to the new node
- * @return Node* address of the new head
  */
-Node* insert_node(Node* head, int value);
+Node* append_node(Node* head, int value);
+
+/**
+ * @brief Insert a node before another node
+ *
+ * @param head
+ * @param before
+ * @param value
+ * */
+void insert_node(Node* head, Node* before, int value);
 
 /**
  * @brief Traverse the List, until a value is found
