@@ -73,10 +73,10 @@ void free_tree(Node* head)
 {
     Node* p = head;
     Node* f;
-    while(p->next != NULL){
+    while(p != NULL){
         f = p;
-        free(f);
         p = p->next;
+        free(f);
     }
-    free(p);
+    // free(p);
 }
