@@ -30,3 +30,6 @@ clean:
 	$(RM) -rv $(OBJ_DIR)  $(EXE)
 
 -include $(OBJ:.o=.d)
+
+docs:
+	doxygen 

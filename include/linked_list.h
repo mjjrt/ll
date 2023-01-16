@@ -13,18 +13,52 @@ typedef struct node{
     Node* next;
 } Node;
 
+/**
+ * @brief Create a node object
+ * 
+ * @param value with whitch the Node is initialized
+ * @return Node* address of the Node
+ */
 Node* create_node(int value);
 
-Node* create_node(int value);
-
+/**
+ * @brief Insert a Node into the List
+ * 
+ * @param head pointer to head (first object)
+ * @param value value to add to the new node
+ * @return Node* address of the new head
+ */
 Node* insert_node(Node* head, int value);
 
+/**
+ * @brief Traverse the List, until a value is found
+ * 
+ * @param head 
+ * @param value 
+ * @return Node* 
+ */
 Node* traverse(Node* head, int value);
 
+/**
+ * @brief remove a Node node
+ * 
+ * @param head 
+ * @param node the address of the Node to be removed
+ */
 void remove_node(Node* head, Node* node);
 
-void print_tree(Node* head);
+/**
+ * @brief Print the list
+ * 
+ * @param head 
+ */
+void print_list(Node* head);
 
-void free_tree(Node* head);
+/**
+ * @brief Deallocate all nodes of the list
+ * 
+ * @param head 
+ */
+void free_list(Node* head);
 
 #endif

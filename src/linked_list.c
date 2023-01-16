@@ -2,17 +2,17 @@
 
 Node* create_node(int value)
 {
-    Node* n = malloc(sizeof(Node));
-    
-    if(n == NULL){
-        fprintf(stderr, "Could not allocate node: %s\n", strerror(errno));
-        exit(1);
-    }
-    
-    n->data = value;
-    n->next = NULL;
-    
-    return n;
+	Node* n = malloc(sizeof(Node));
+
+	if(n == NULL){
+		fprintf(stderr, "Could not allocate node: %s\n", strerror(errno));
+		exit(1);
+	}
+
+	n->data = value;
+	n->next = NULL;
+
+	return n;
 }
 
 Node* insert_node(Node* head, int value)
@@ -56,7 +56,7 @@ void remove_node(Node* head, Node* node)
     free(node);
 }
 
-void print_tree(Node* head)
+void print_list(Node* head)
 {
     Node* p = head;
     if(p->next == NULL){
@@ -69,7 +69,7 @@ void print_tree(Node* head)
     }
 }
 
-void free_tree(Node* head)
+void free_list(Node* head)
 {
     Node* p = head;
     Node* f;

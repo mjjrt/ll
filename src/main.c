@@ -14,9 +14,9 @@ int main(void)
     Node* five = traverse(head, 5);
     remove_node(head, five);
 
-    print_tree(head);
+    print_list(head);
 
-    free_tree(head);
+    free_list(head);
 
     return 0;
 }
