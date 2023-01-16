@@ -1,20 +1,32 @@
-SRC=*.c
-OBJ=*.o
-OUT= ll
+SRC_DIR := src
+OBJ_DIR	:= obj
 
-CC =gcc
-CFLAGS = -Wall -Werror
+INC_DIR := include
 
-all: clean $(OBJ) $(OUT)
+CC 		:= gcc
+CFLAGS 	:= -g -Wall -Werror -I$(INC_DIR)
 
-$(OUT): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(OUT)
+RM := rm
 
-$(OBJ): $(SRC)
-	$(CC) $(CFLAGS) -c $(SRC)
+EXE := ll
+
+SRC := $(wildcard $(SRC_DIR)/*.c)
+OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+.PHONY: all clean
+
+all: $(EXE)
+
+$(EXE): $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ) $(OUT)
+	$(RM) -rv $(OBJ_DIR)  $(EXE)
 
-docs:
-	doxygen $(SRC)
+-include $(OBJ:.o=.d)

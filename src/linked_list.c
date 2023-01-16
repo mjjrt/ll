@@ -74,9 +74,9 @@ void free_tree(Node* head)
     Node* p = head;
     Node* f;
     while(p != NULL){
-        f = p;
-        p = p->next;
-        free(f);
+        f = p; // copy p to temporary pointer f
+        p = p->next; // update the pointer 
+        free(f); // free f, p remains
     }
-    // free(p);
+    // if p is NULL, it does not need to be freed.
 }
